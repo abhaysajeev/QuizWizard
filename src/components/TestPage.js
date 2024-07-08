@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
-import questionsData from '../questions.json'; // Adjust the path as necessary
-import warningIcon from '../images/warning.png'; // Import the warning icon
+import questionsData from '../questions.json';
+import warningIcon from '../images/warning.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/TestPage.css';
 
@@ -20,7 +20,7 @@ const TestPage = () => {
   const [notes, setNotes] = useState('');
   const [timeLeft, setTimeLeft] = useState(() => {
     const storedTimeLeft = localStorage.getItem('timeLeft');
-    return storedTimeLeft ? parseInt(storedTimeLeft, 10) : 300; // Default to 5 minutes (300 seconds)
+    return storedTimeLeft ? parseInt(storedTimeLeft, 10) : 300;
   });
   const [isUserValid, setIsUserValid] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
@@ -43,19 +43,18 @@ const TestPage = () => {
   useEffect(() => {
     const storedUserData = localStorage.getItem('userData');
     if (!storedUserData) {
-      navigate('/'); // Redirect to login if no user data
+      navigate('/');
       return;
     }
 
     const userData = JSON.parse(storedUserData);
     const category = userData.category;
-    const filteredQuestions = questionsData.filter(question => question.category === category).slice(0, 3); // Limit to 3 questions
+    const filteredQuestions = questionsData.filter(question => question.category === category).slice(0, 3);
     setQuestions(filteredQuestions);
     setIsUserValid(true);
   }, [navigate]);
 
   useEffect(() => {
-    // Store initial timeLeft in localStorage
     localStorage.setItem('timeLeft', timeLeft.toString());
 
     if (isUserValid) {
@@ -67,7 +66,7 @@ const TestPage = () => {
             return 0;
           }
           const newTimeLeft = prevTime - 1;
-          localStorage.setItem('timeLeft', newTimeLeft.toString()); // Update timeLeft in localStorage
+          localStorage.setItem('timeLeft', newTimeLeft.toString());
           return newTimeLeft;
         });
       }, 1000);
@@ -85,7 +84,6 @@ const TestPage = () => {
       [questionIndex]: optionId,
     }));
 
-    // Update localStorage with the new answers
     localStorage.setItem('answers', JSON.stringify({
       ...answers,
       [questionIndex]: optionId,
@@ -146,12 +144,12 @@ const TestPage = () => {
   };
 
   const handleExit = () => {
-    setShowExitModal(true); // Show exit confirmation modal
+    setShowExitModal(true);
   };
 
   const handleConfirmExit = () => {
     setShowExitModal(false);
-    localStorage.clear(); // Clear all localStorage data upon exit
+    localStorage.clear();
     navigate('/');
   };
 
@@ -164,7 +162,7 @@ const TestPage = () => {
     handleSubmit();
   };
 
-  if (!isUserValid) return null; // Or a loading spinner if you prefer
+  if (!isUserValid) return null;
 
   if (questions.length === 0) {
     return <div>No questions available for this category.</div>;
@@ -217,7 +215,6 @@ const TestPage = () => {
         </div>
       </div>
 
-      {/* Exit Modal */}
       <Modal show={showExitModal} onHide={handleCancelExit} centered dialogClassName="custom-modal">
         <Modal.Body>
           <img src={warningIcon} alt="Warning" className="warning-icon" />
@@ -230,7 +227,6 @@ const TestPage = () => {
         </Modal.Footer>
       </Modal>
 
-      {/* Submit Modal */}
       <Modal show={showSubmitModal} onHide={() => setShowSubmitModal(false)} centered dialogClassName="custom-modal">
         <Modal.Body>
           <img src={warningIcon} alt="Warning" className="warning-icon" />
@@ -242,7 +238,6 @@ const TestPage = () => {
           <Button variant="primary" onClick={() => setShowSubmitModal(false)}>Cancel</Button>
         </Modal.Footer>
       </Modal>
-
     </div>
   );
 };

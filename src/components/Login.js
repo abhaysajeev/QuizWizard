@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/Login.css';
-import logo from '../images/CinicalScholar.png'; // Adjust the path to your logo image
+import logo from '../images/CinicalScholar.png'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');

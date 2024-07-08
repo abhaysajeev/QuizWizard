@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 100%; /* Make the container fluid */
+  max-width: 100%; 
 }
 
 .timer {
@@ -18,7 +18,7 @@
 .main-content {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start; /* Align children to the left */
+  justify-content: flex-start; 
 }
 
 .question-section {
@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start; /* Align content to the left */
+  align-items: flex-start; 
   padding: 20px;
   text-align: left;
   min-height: 500px;
@@ -41,7 +41,7 @@
 .question-text {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: -96px; /* Adjusted margin for better spacing */
+  margin-bottom: -96px; 
 }
 
 .options {
@@ -53,7 +53,7 @@
 
 .option {
   font-size: 16px;
-  margin-bottom: 20px; /* Adjusted margin for better spacing */
+  margin-bottom: 20px; 
   margin-left: 0;
 }
 
@@ -79,7 +79,7 @@
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
-  margin-left: 10px; /* Adjusted margin for better spacing */
+  margin-left: 10px; 
 }
 
 .navigation-buttons {
@@ -108,7 +108,7 @@
 }
 
 .custom-modal .modal-dialog {
-  max-width: 600px; /* Adjust modal width as needed */
+  max-width: 600px; 
 }
 
 .custom-modal .modal-body {

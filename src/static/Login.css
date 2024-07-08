@@ -29,40 +29,40 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay for better visibility */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .logo-overlay {
     position: relative;
     z-index: 1;
     display: flex;
-    align-items: center; /* Center logo and text horizontally */
+    align-items: center; 
 }
 
 .logo {
-    width: 80px; /* Adjust the size of the logo */
+    width: 80px; 
     height: auto;
-    filter: brightness(1.5); /* Adjust the brightness of the logo */
-    margin-right: 5px; /* Space between logo and text */
+    filter: brightness(1.5); 
+    margin-right: 5px;
     margin-top: -32px;
 }
 
 .logo-text {
-    color: #ffffff; /* Color of the text */
-    font-family: Verdana, sans-serif; /* Match the font family */
+    color: #ffffff; 
+    font-family: Verdana, sans-serif; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .logo-top-text {
-    font-size: 32px; /* Font size for "Clinical" */
+    font-size: 32px; 
     font-weight: bold;
-    margin-bottom: -20px; /* Adjust spacing */
+    margin-bottom: -20px; 
 }
 
 .logo-bottom-text {
-    font-size: 52px; /* Font size for "Scholar" */
+    font-size: 52px; 
     font-weight: bold;
 }
 

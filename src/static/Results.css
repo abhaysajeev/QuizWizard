@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F8F8F8 /* Set the background color */
+    background-color: #F8F8F8 
   }
   
   .result-box {
@@ -38,7 +38,7 @@
   
   .result-summary h2 {
     font-size: 48px;
-    color: #2B7DF7; /* Set the text color */
+    color: #2B7DF7; 
     margin: 0;
   }
   

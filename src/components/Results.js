@@ -13,9 +13,9 @@ const Results = () => {
     const resultData = JSON.parse(localStorage.getItem('resultData'));
 
     if (!userData) {
-      navigate('/'); // Redirect to login if no user data
+      navigate('/'); 
     } else if (!resultData) {
-      navigate('/'); // Redirect if no result data
+      navigate('/'); 
     }
   }, [navigate]);
 
@@ -24,11 +24,11 @@ const Results = () => {
     localStorage.removeItem('resultData');
     localStorage.removeItem('currentQuestionIndex');
     localStorage.removeItem('timeLeft');
-    navigate('/'); // Navigate to login page after clearing storage
+    navigate('/'); 
   };
 
   const resultData = JSON.parse(localStorage.getItem('resultData'));
-  if (!resultData) return null; // This ensures component doesn't break if resultData is not available
+  if (!resultData) return null; 
 
   const { score, correctCount, wrongCount, skippedCount, percentageScore, timeTaken, notes } = resultData;
   const totalQuestions = resultData.questions.length;

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../static/Header.css'; // Ensure no conflicting styles here
+import '../static/Header.css'; 
 import logo from '../images/ClinicalScholarColor.png';
 
 const Header = () => {
