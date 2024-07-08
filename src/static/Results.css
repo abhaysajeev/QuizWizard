@@ -51,13 +51,13 @@
   .result-charts {
     display: flex;
     justify-content: space-around;
-    margin: 50px 180px; /* Adjust the margin between the charts */
+    margin: 50px 180px; 
   }
   
   .chart {
     text-align: center;
     width: 87px;
-    margin: 0 10px; /* Adjust the margin between each chart */
+    margin: 0 10px; 
   }
   
   .chart p {
@@ -89,7 +89,7 @@
     display: block;
     width: 100px;
     margin: 20px auto 0;
-    background-color: #2B7DF7; /* Set button color */
+    background-color: #2B7DF7; 
     border: none;
   }
   

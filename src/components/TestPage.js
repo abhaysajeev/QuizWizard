@@ -26,6 +26,22 @@ const TestPage = () => {
   const [showExitModal, setShowExitModal] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
 
+  // Function to prevent back navigation
+  useEffect(() => {
+    const preventBackNavigation = () => {
+      window.history.pushState(null, null, window.location.pathname);
+      window.addEventListener('popstate', function (event) {
+        window.history.pushState(null, null, window.location.pathname);
+      });
+    };
+
+    preventBackNavigation();
+
+    return () => {
+      window.removeEventListener('popstate', preventBackNavigation);
+    };
+  }, []);
+
   const handleSubmit = useCallback(() => {
     const scoreData = calculateScore();
     const timeTaken = 300 - timeLeft;

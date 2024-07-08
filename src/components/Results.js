@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../static/Results.css';
 
+
 const Results = () => {
   const navigate = useNavigate();
 
@@ -12,23 +13,31 @@ const Results = () => {
     const userData = JSON.parse(localStorage.getItem('userData'));
     const resultData = JSON.parse(localStorage.getItem('resultData'));
 
-    if (!userData) {
-      navigate('/'); 
-    } else if (!resultData) {
-      navigate('/'); 
+    if (!userData || !resultData) {
+      navigate('/');
     }
+
+    const preventBackNavigation = () => {
+      window.history.pushState(null, null, window.location.pathname);
+      window.addEventListener('popstate', function (event) {
+        window.history.pushState(null, null, window.location.pathname);
+      });
+    };
+
+    preventBackNavigation();
+
+    return () => {
+      window.removeEventListener('popstate', preventBackNavigation);
+    };
   }, [navigate]);
 
   const handleExit = () => {
-    localStorage.removeItem('userData');
-    localStorage.removeItem('resultData');
-    localStorage.removeItem('currentQuestionIndex');
-    localStorage.removeItem('timeLeft');
-    navigate('/'); 
+    localStorage.clear(); // Clear all items from localStorage
+    navigate('/');
   };
 
   const resultData = JSON.parse(localStorage.getItem('resultData'));
-  if (!resultData) return null; 
+  if (!resultData) return null;
 
   const { score, correctCount, wrongCount, skippedCount, percentageScore, timeTaken, notes } = resultData;
   const totalQuestions = resultData.questions.length;
@@ -51,34 +60,34 @@ const Results = () => {
         </div>
         <div className="result-charts">
           <div className="chart">
-            <CircularProgressbar 
-              value={percentageScore} 
-              text={`${percentageScore.toFixed(2)}%`} 
-              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })} 
+            <CircularProgressbar
+              value={percentageScore}
+              text={`${percentageScore.toFixed(2)}%`}
+              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })}
             />
             <p>Final Score</p>
           </div>
           <div className="chart">
-            <CircularProgressbar 
-              value={(correctCount / totalQuestions) * 100} 
-              text={`${correctCount}`} 
-              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })} 
+            <CircularProgressbar
+              value={(correctCount / totalQuestions) * 100}
+              text={`${correctCount}`}
+              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })}
             />
             <p>Correct</p>
           </div>
           <div className="chart">
-            <CircularProgressbar 
-              value={(wrongCount / totalQuestions) * 100} 
-              text={`${wrongCount}`} 
-              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })} 
+            <CircularProgressbar
+              value={(wrongCount / totalQuestions) * 100}
+              text={`${wrongCount}`}
+              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })}
             />
             <p>Wrong</p>
           </div>
           <div className="chart">
-            <CircularProgressbar 
-              value={(skippedCount / totalQuestions) * 100} 
-              text={`${skippedCount}`} 
-              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })} 
+            <CircularProgressbar
+              value={(skippedCount / totalQuestions) * 100}
+              text={`${skippedCount}`}
+              styles={buildStyles({ textColor: "#2B7DF7", pathColor: "#2B7DF7" })}
             />
             <p>Skipped</p>
           </div>
